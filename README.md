@@ -1,5 +1,5 @@
 # TPTorneio
-## 1 Especificação do Problema
+## Especificação do Problema
 Um torneio é uma competição popular nos Sete Reinos de Westeros. Torneios em Westeros variam de acordo
 com a região em que o torneio é realizado, os desejos do senhor do castelo ou região, e as regras elaboradas
 pelo mestre dos jogos. O evento central de muitos torneios westerosi é a justa, em que dois cavaleiros
@@ -22,12 +22,12 @@ O objetivo de Sor Ducan é ficar entre os K melhores cavaleiros do torneio, para
 como um bom cavaleiro e ter um bom prêmio. Determine o esforço mínimo necessário que ele precisa investir
 para alcançar seu objetivo, se for possível.
 
-## 2 Entrada
+## Entrada
 A primeira linha contém um par de números inteiros N e K (1 ≤ K ≤ N + 1). As i-ésimas linhas seguintes
 contém N linhas com dois números inteiros, separados por um único espaço - pi e ei (0 ≤ pi
 , ei ≤ 100000).
 
-## 3 Saída
+## Saída
 Imprimir um único número em uma única linha - a quantidade mínima de esforço que Sor Ducan precisa para
 se classificar entre os K melhores do torneio. Se nenhuma quantidade de esforço fará com que Sor Ducan
 tenha a classificação desejada o número de saída deve ser -1.
