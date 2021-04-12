@@ -1,0 +1,13 @@
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\obj\Debug\netcoreapp3.1\tp-torneio.csprojAssemblyReference.cache
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\obj\Debug\netcoreapp3.1\tp-torneio.AssemblyInfoInputs.cache
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\obj\Debug\netcoreapp3.1\tp-torneio.AssemblyInfo.cs
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\obj\Debug\netcoreapp3.1\tp-torneio.csproj.CoreCompileInputs.cache
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\bin\Debug\netcoreapp3.1\tp-torneio.exe
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\bin\Debug\netcoreapp3.1\tp-torneio.deps.json
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\bin\Debug\netcoreapp3.1\tp-torneio.runtimeconfig.json
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\bin\Debug\netcoreapp3.1\tp-torneio.runtimeconfig.dev.json
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\bin\Debug\netcoreapp3.1\tp-torneio.dll
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\bin\Debug\netcoreapp3.1\tp-torneio.pdb
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\obj\Debug\netcoreapp3.1\tp-torneio.dll
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\obj\Debug\netcoreapp3.1\tp-torneio.pdb
+D:\ASTRA\Área de Trabalho\Astro boy 2020\Faculdade\Quinto Semestre\TÉCNICAS AVANÇADAS DE PROGRAMAÇÃO\tp-torneio\obj\Debug\netcoreapp3.1\tp-torneio.genruntimeconfig.cache
