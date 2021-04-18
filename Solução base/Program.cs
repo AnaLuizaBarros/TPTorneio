@@ -36,7 +36,7 @@ namespace tp_torneio
 
             stopWatch.Start();
 
-            do
+            while (index < n+1)
             {
                 src.Remove(ducan);
                 if (index == 0)
@@ -44,7 +44,7 @@ namespace tp_torneio
                     ducan = new long[] { 0, edInicial, 1, -1 };
                     src = ClonarLista(srcOriginal);
                 }
-                if (ducan[1] == 0 || index == n)
+                if (ducan[1] == 0 || index == n+1)
                 {
                     AddPontos(src, index);
                     src.Add(ducan);
@@ -76,7 +76,7 @@ namespace tp_torneio
                     }
                     ++index;
                 }
-            } while (index < n);
+            }
 
             stopWatch.Stop();
 
@@ -85,12 +85,8 @@ namespace tp_torneio
 
         private static bool ObjetivoCompleto(List<long[]> src, long k, out List<long[]> ord)
         {
-            //Stopwatch sw = new Stopwatch();
-            //sw.Start();
             var ordenado = src.OrderByDescending(x => x[0]).ThenByDescending(x => x[2]).ToList();
             var index = ordenado.IndexOf(ordenado.First(x => x[3] == -1));
-            //sw.Stop();
-            //Console.WriteLine($"ObjetivoCompleto Benchmark: {sw.Elapsed}");
             if (index <= k - 1)
             {
                 ord = ordenado;
