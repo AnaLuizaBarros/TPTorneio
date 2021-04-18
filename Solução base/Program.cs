@@ -12,6 +12,7 @@ namespace tp_torneio
         static void Main(string[] args)
         {
             //O(N)
+            foreach (int n in new int[] { 2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000, 10000, 100000 })
             var ns = new int[] { 2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000, 10000, 100000 };
             foreach (int n in ns)
             {
