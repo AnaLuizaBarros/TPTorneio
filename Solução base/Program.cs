@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 
 namespace tp_torneio
 {
@@ -10,12 +11,77 @@ namespace tp_torneio
     {
         static void Main(string[] args)
         {
-            foreach (int n in new int[] { 2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000, 10000, 100000 })
+            var ns = new int[] { 2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000, 10000, 100000 };
+            foreach (int n in ns)
             {
                 Console.WriteLine($"Programa iniciado com {n} participantes!");
                 Iterativa(n);
                 Console.WriteLine("Pressione qualquer tecla para executar o próximo N!\n");
                 Console.ReadKey();
+            }
+            Random rnd = new Random();
+            foreach (int n in ns)
+            {
+                Console.WriteLine($"Programa iniciado com {n} participantes!");
+                Stopwatch sw = new Stopwatch();
+                var srcOriginal = GerarPlacar(n);
+                var k = rnd.Next(1, n + 1);
+                ImprimirInicio(srcOriginal, k);
+                sw.Start();
+                var resultado = Recursiva(n, k, 0, new long[] { 0, 0, 1, -1 }, new List<long[]>(), srcOriginal, 0);
+                sw.Stop();
+                ImprimirFinal(n, k, sw, resultado != null);
+                Console.WriteLine("Pressione qualquer tecla para executar o próximo N!\n");
+                Console.ReadKey();
+            }
+        }
+
+        private static List<long[]> Recursiva(int n, int k, int index, long[] ducan, List<long[]> src, List<long[]> srcOriginal, long edInicial)
+        {
+            if (index == n + 1)
+                return null;
+            else
+            {
+                if (index == 0)
+                {
+                    ducan = new long[] { 0, edInicial, 1, -1 };
+                    src = ClonarLista(srcOriginal);
+                }
+                if (ducan[1] == 0 || index == n + 1)
+                {
+                    AddPontos(src, index);
+                    src.Add(ducan);
+                    var final = new List<long[]>();
+                    if (!ObjetivoCompleto(src, k, out final))
+                    {
+                        src.Remove(ducan);
+                        if (index < n)
+                            edInicial += src[index][1];
+                        else return null;
+                        index = 0;
+                        return Recursiva(n, k, index, ducan, src, srcOriginal, edInicial);
+                    }
+                    else
+                    {
+                        ImprimirObjetivoCompleto(edInicial, final);
+                        return final;
+                    }
+                }
+                else
+                {
+                    if (ducan[1] >= src[index][1])
+                    {
+                        ++ducan[0];
+                        ducan[1] -= src[index][1];
+                    }
+                    else
+                    {
+                        ++src[index][0];
+                        ++src[index][2];
+                    }
+                    ++index;
+                    return Recursiva(n, k, index, ducan, src, srcOriginal, edInicial);
+                }
             }
         }
 
@@ -24,7 +90,7 @@ namespace tp_torneio
             Random rnd = new Random();
             Stopwatch stopWatch = new Stopwatch();
             
-            int k = rnd.Next(1, n+1);
+            int k = rnd.Next(1, n + 1);
             var srcOriginal = GerarPlacar(n);
             int index = 0;
             long edInicial = 0;
@@ -36,7 +102,7 @@ namespace tp_torneio
 
             stopWatch.Start();
 
-            while (index < n+1)
+            do
             {
                 src.Remove(ducan);
                 if (index == 0)
@@ -52,7 +118,9 @@ namespace tp_torneio
                     if (!ObjetivoCompleto(src, k, out final))
                     {
                         src.Remove(ducan);
-                        edInicial += src[index][1];
+                        if (index < n)
+                            edInicial += src[index][1];
+                        else break;
                         index = 0;
                     }
                     else
@@ -76,7 +144,7 @@ namespace tp_torneio
                     }
                     ++index;
                 }
-            }
+            } while (index < n+1);
 
             stopWatch.Stop();
 
