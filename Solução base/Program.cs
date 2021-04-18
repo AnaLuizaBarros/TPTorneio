@@ -11,6 +11,8 @@ namespace tp_torneio
     {
         static void Main(string[] args)
         {
+            //O(N)
+            foreach (int n in new int[] { 2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000, 10000, 100000 })
             var ns = new int[] { 2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000, 10000, 100000 };
             foreach (int n in ns)
             {
@@ -87,6 +89,7 @@ namespace tp_torneio
 
         private static void Iterativa(int n)
         {
+            //O(NlogN)
             Random rnd = new Random();
             Stopwatch stopWatch = new Stopwatch();
             
@@ -105,16 +108,19 @@ namespace tp_torneio
             do
             {
                 src.Remove(ducan);
+           
                 if (index == 0)
                 {
                     ducan = new long[] { 0, edInicial, 1, -1 };
                     src = ClonarLista(srcOriginal);
                 }
+            
                 if (ducan[1] == 0 || index == n+1)
                 {
                     AddPontos(src, index);
                     src.Add(ducan);
                     var final = new List<long[]>();
+                    
                     if (!ObjetivoCompleto(src, k, out final))
                     {
                         src.Remove(ducan);
@@ -132,6 +138,7 @@ namespace tp_torneio
                 }
                 else
                 {
+
                     if (ducan[1] >= src[index][1])
                     {
                         ++ducan[0];
@@ -153,6 +160,7 @@ namespace tp_torneio
 
         private static bool ObjetivoCompleto(List<long[]> src, long k, out List<long[]> ord)
         {
+            //O(1)
             var ordenado = src.OrderByDescending(x => x[0]).ThenByDescending(x => x[2]).ToList();
             var index = ordenado.IndexOf(ordenado.First(x => x[3] == -1));
             if (index <= k - 1)
@@ -169,6 +177,7 @@ namespace tp_torneio
 
         private static void AddPontos(List<long[]> src, int index)
         {
+            //O(N)
             for (int i = index; i < src.Count; ++i)
             {
                 ++src[i][0];
@@ -178,11 +187,13 @@ namespace tp_torneio
 
         private static List<long[]> ClonarLista(List<long[]> src)
         {
+            //O(1)
             return src.Select(item => (long[])item.Clone()).ToList();
         }
 
         private static void ImprimirMatriz(List<long[]> src)
         {
+            //O(N²)
             foreach (long[] array in src)
             {
                 for(long i = 0; i < 2; i++)
@@ -193,6 +204,7 @@ namespace tp_torneio
 
         private static void ImprimirObjetivoCompleto(long edInicial, List<long[]> final)
         {
+            //O(1)
             Console.WriteLine($"Objetivo completo com {edInicial} de mínimo de esforço!");
             Console.WriteLine("Placar: ");
             Console.WriteLine("Pontuação\tEsforço");
@@ -204,6 +216,7 @@ namespace tp_torneio
 
         private static void ImprimirInicio(List<long[]> srcOriginal, long k)
         {
+            //O(1)
             Console.WriteLine("Placar inicial");
             Console.WriteLine("Pontuação\tEsforço");
             ImprimirMatriz(srcOriginal);
@@ -212,6 +225,7 @@ namespace tp_torneio
 
         private static List<long[]> GerarPlacar(int n)
         {
+           //O(N)
             Random rnd = new Random();
             var src = new List<long[]>();
             for(int i = 0; i < n; ++i)
@@ -221,6 +235,7 @@ namespace tp_torneio
 
         private static void ImprimirFinal(int n, int k, Stopwatch stopWatch, bool completed)
         {
+            //O(1)
             Console.WriteLine($"Tempo de Execução com {n} participantes com o objetivo de estar em {k}º lugar: " + stopWatch.Elapsed);
             if (!completed)
                 Console.WriteLine("Esforço: -1");
