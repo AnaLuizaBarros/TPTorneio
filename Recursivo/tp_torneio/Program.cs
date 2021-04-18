@@ -13,13 +13,6 @@ namespace tp_torneio
         {
             //O(N)
             var ns = new int[] { 2, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000, 10000, 100000 };
-            foreach (int n in ns)
-            {
-                Console.WriteLine($"Programa iniciado com {n} participantes!");
-                Iterativa(n);
-                Console.WriteLine("Pressione qualquer tecla para executar o próximo N!\n");
-                Console.ReadKey();
-            }
             Random rnd = new Random();
             foreach (int n in ns)
             {
@@ -86,77 +79,6 @@ namespace tp_torneio
             }
         }
 
-        private static void Iterativa(int n)
-        {
-            //O(NlogN)
-            Random rnd = new Random();
-            Stopwatch stopWatch = new Stopwatch();
-            
-            int k = rnd.Next(1, n + 1);
-            var srcOriginal = GerarPlacar(n);
-            int index = 0;
-            long edInicial = 0;
-            var ducan = new long[] { 0, edInicial, 1, -1 };
-            var src = new List<long[]>();
-            bool completed = false;
-
-            ImprimirInicio(srcOriginal, k);
-
-            stopWatch.Start();
-
-            do
-            {
-                src.Remove(ducan);
-           
-                if (index == 0)
-                {
-                    ducan = new long[] { 0, edInicial, 1, -1 };
-                    src = ClonarLista(srcOriginal);
-                }
-            
-                if (ducan[1] == 0 || index == n+1)
-                {
-                    AddPontos(src, index);
-                    src.Add(ducan);
-                    var final = new List<long[]>();
-                    
-                    if (!ObjetivoCompleto(src, k, out final))
-                    {
-                        src.Remove(ducan);
-                        if (index < n)
-                            edInicial += src[index][1];
-                        else break;
-                        index = 0;
-                    }
-                    else
-                    {
-                        completed = true;
-                        ImprimirObjetivoCompleto(edInicial, final);
-                        break;
-                    }
-                }
-                else
-                {
-
-                    if (ducan[1] >= src[index][1])
-                    {
-                        ++ducan[0];
-                        ducan[1] -= src[index][1];
-                    }
-                    else
-                    {
-                        ++src[index][0];
-                        ++src[index][2];
-                    }
-                    ++index;
-                }
-            } while (index < n+1);
-
-            stopWatch.Stop();
-
-            ImprimirFinal(n, k, stopWatch, completed);
-        }
-
         private static bool ObjetivoCompleto(List<long[]> src, long k, out List<long[]> ord)
         {
             //O(1)
@@ -195,8 +117,8 @@ namespace tp_torneio
             //O(N²)
             foreach (long[] array in src)
             {
-                for(long i = 0; i < 2; i++)
-                    Console.Write(array[i] + "\t\t" + (array[i+2] == -1 ? "<- Ducan\t" : ""));
+                for (long i = 0; i < 2; i++)
+                    Console.Write(array[i] + "\t\t" + (array[i + 2] == -1 ? "<- Ducan\t" : ""));
                 Console.WriteLine();
             }
         }
@@ -224,10 +146,10 @@ namespace tp_torneio
 
         private static List<long[]> GerarPlacar(int n)
         {
-           //O(N)
+            //O(N)
             Random rnd = new Random();
             var src = new List<long[]>();
-            for(int i = 0; i < n; ++i)
+            for (int i = 0; i < n; ++i)
                 src.Add(new long[] { rnd.Next(0, n), rnd.Next(0, 100000), 0, -2 });
             return src.OrderByDescending(x => x[0]).ThenBy(x => x[1]).ToList(); ;
         }
